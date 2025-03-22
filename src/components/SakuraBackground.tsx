@@ -33,8 +33,8 @@ const SakuraBackground: React.FC = () => {
       y: Math.random() * canvas.height,
       size: Math.random() * 15 + 5,
       rotation: Math.random() * Math.PI * 2,
-      speed: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.5 + 0.3,
+      speed: Math.random() * 2 + 0.25,
+      opacity: Math.random() * 0.5 + 0.2,
     }));
 
     // Draw a single petal
