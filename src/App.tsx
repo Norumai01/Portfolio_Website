@@ -1,14 +1,15 @@
 import SakuraBackground from "./components/SakuraBackground.tsx";
-import { useState, useEffect, useRef } from "react";
+import {useState, useEffect, useRef, RefObject} from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import {AlignLeft, CodeXml, Mail, MapPin} from "lucide-react";
+import { AlignLeft, CodeXml, Mail, MapPin, Heart } from "lucide-react";
 import ProfilePic from "./assets/profile_pic.avif";
-
+import { knowledge } from "./data/knowledge.ts";
+import KnowledgeSection from "./components/KnowledgeSection.tsx";
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const aboutMeRef = useRef<HTMLDivElement>(null);
+  const aboutMeRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,13 +111,13 @@ function App() {
                 </div>
                 <div id="info" className="max-w-md">
                   <div className="text-xl md:text-2xl font-sans font-semibold text-gray-300">
-                    Johnny N.
+                    Johnny Nguyen
                   </div>
                   <div className="text-lg md:text-xl font-sans text-gray-400">
                     Norumai
                   </div>
                   <p className="text-md md:text-lg font-sans text-gray-300 mt-4">
-                    Tech gremlin passionate for software architecture, cloud solutions, and embedded systems. Focused on user-centered design and security.
+                    Tech gremlin passionate for software architecture, full-stack development, and embedded systems. Focused on user-centered design and security.
                   </p>
                   <p id="location" className="flex gap-3 items-center text-xs md:text-sm font-sans text-gray-200 mt-6">
                     <MapPin className="text-[#FF6B9D] size-5 md:size-6"/>
@@ -128,10 +129,47 @@ function App() {
                   </p>
                 </div>
               </div>
-              <div className=""></div>
+              <div className="flex flex-col space-y-6">
+                {knowledge.map((skill) => (
+                  <KnowledgeSection
+                    key={skill.id}
+                    title={skill.title}
+                    items={skill.items}
+                    icon={skill.icon}
+                    className={skill.className}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="relative mt-16">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FF6B9D] to-transparent opacity-30"></div>
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-2 text-gray-300">
+                <Heart className="w-4 h-4 text-[#FF6B9D]" />
+                <span>Norumai</span>
+              </div>
+              <div className="flex gap-6">
+                <a id="discord" href="https://discordapp.com/users/norumai" className="w-5">
+                  <FaDiscord size="auto" className="hover:text-[#FF6B9D] transition-colors cursor-pointer"/>
+                </a>
+                <a id="gitHub" href="https://github.com/Norumai01" className="w-5">
+                  <FaGithub size="auto" className="hover:text-[#FF6B9D] transition-colors cursor-pointer"/>
+                </a>
+                <a id="linkedIn" href="https://www.linkedin.com/in/johnnynguyen2001" className="w-5">
+                  <FaLinkedin size="auto" className="hover:text-[#FF6B9D] transition-colors cursor-pointer"/>
+                </a>
+                <a id="gmail" href="mailto:johnnydinhnguyen2001@gmail.com" className="w-5">
+                  <SiGmail size="auto" className="hover:text-[#FF6B9D] transition-colors cursor-pointer"/>
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   )
