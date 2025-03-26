@@ -1,8 +1,8 @@
 import SakuraBackground from "./components/SakuraBackground.tsx";
-import {useState, useEffect, useRef, RefObject} from "react";
+import { useState, useEffect, useRef, RefObject } from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { AlignLeft, CodeXml, Mail, MapPin, Heart } from "lucide-react";
+import { AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users } from "lucide-react";
 import ProfilePic from "./assets/profile_pic.avif";
 import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
@@ -10,10 +10,16 @@ import KnowledgeSection from "./components/KnowledgeSection.tsx";
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const aboutMeRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
+  const experienceRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
+  const projectsRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight);
+      const totalScrollableHeight: number = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScrollPosition: number = window.scrollY
+      const bottomThreshold: number = 50 // How close to the bottom to trigger (Ex. 100px)
+
+      setScrolled(totalScrollableHeight - currentScrollPosition <= bottomThreshold);
     };
 
     // Observes if user has scrolled to the following section.
@@ -33,6 +39,8 @@ function App() {
 
     // Add more sections here tp apply the following effect.
     if (aboutMeRef.current) observer.observe(aboutMeRef.current);
+    if (experienceRef.current) observer.observe(experienceRef.current);
+    if (projectsRef.current) observer.observe(projectsRef.current);
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -48,24 +56,25 @@ function App() {
 
       <div className={`relative z-20 transition-colors duration-500 ${scrolled ? "bg-[#1E1B2E]" : ""}`}>
         {/* Dropdown Menu */}
-        <nav className="absolute container max-w-full">
+        <nav className="absolute xl:fixed container max-w-full">
           <div className="flex items-center justify-between mb-6 mt-3">
             <div className="dropdown">
               <div
                 tabIndex={0}
-                className="ml-3 p-3 flex items-center rounded-full hover:bg-[#2A2744] cursor-pointer border border-[#1B1829] transition-colors duration-300">
+                className="ml-3 p-3 flex items-center rounded-full hover:bg-[#2A2744] cursor-pointer border border-[#1B1829] transition-all duration-400 shadow-[#181524] shadow-lg hover:shadow-xl">
                 <AlignLeft className="text-gray-300" />
               </div>
-              <ul className="menu menu-sm dropdown-content bg-[#1B1829] rounded-box ml-3 w-36">
-                <li><a>Home</a></li>
-                <li><a>About Me</a></li>
+              <ul className="menu menu-sm dropdown-content bg-[#1B1829] rounded-box ml-3 w-xs space-y-2 md:w-36 md:space-y-0">
+                <li><a href="#Home" className="hover:text-[#FF6B9D]">Home</a></li>
+                <li><a href="#aboutMe" className="hover:text-[#FF6B9D]">About Me</a></li>
+                <li><a className="hover:text-[#FF6B9D]">Projects</a></li>
               </ul>
             </div>
           </div>
         </nav>
 
         {/* Header */}
-        <header className="min-h-screen flex items-center container mx-auto px-4">
+        <header id="Home" className="min-h-screen flex items-center container mx-auto px-4">
           <div className="w-full text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B9D] to-[#4A9DFF] animate-fade-in">
               Johnny Nguyen
@@ -94,7 +103,7 @@ function App() {
         </header>
 
         {/* About Me */}
-        <section className="container mx-auto px-4 py-16">
+        <section id="aboutMe" className="container mx-auto px-4 py-16">
           <div ref={aboutMeRef} className="opacity-0 translate-y-4">
             <h2 className="flex gap-3 items-center justify-center text-2xl md:text-3xl mb-12 font-bold">
               <CodeXml className="text-[#FF6B9D] w-10 h-10 md:w-12 md:h-12" />
@@ -103,7 +112,7 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="flex flex-col items-center space-y-9">
                 <div id="avatar">
-                  <div className="size-84 md:size-96 relative hover:scale-105 overflow-hidden rounded-full shadow-xl hover:shadow-2xl shadow-[#181524] transition-all duration-400">
+                  <div className="size-84 md:size-90 lg:size-102 relative hover:scale-105 overflow-hidden rounded-full shadow-xl hover:shadow-2xl shadow-[#181524] transition-all duration-400">
                     <div className="flex h-full w-full items-center justify-center">
                       <img src={ProfilePic} alt="Profile Picture" className="h-full w-full object-cover" />
                     </div>
@@ -144,9 +153,29 @@ function App() {
           </div>
         </section>
 
+        {/* Experience */}
+        <section id="Projects" className="container mx-auto px-4 py-16">
+          <div ref={experienceRef} className="opacity-0 translate-y-4">
+            <h2 className="flex gap-3 items-center justify-center text-2xl md:text-3xl mb-12 font-bold">
+              <Users className="text-[#FF6B9D] w-10 h-10 md:w-12 md:h-12" />
+              Experiences
+            </h2>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="Projects" className="container mx-auto px-4 py-16">
+          <div ref={projectsRef} className="opacity-0 translate-y-4">
+            <h2 className="flex gap-3 items-center justify-center text-2xl md:text-3xl mb-12 font-bold">
+              <FolderGit className="text-[#FF6B9D] w-10 h-10 md:w-12 md:h-12" />
+              Projects
+            </h2>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="relative mt-16">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FF6B9D] to-transparent opacity-30"></div>
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FF6B9D] to-transparent opacity-30" />
           <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-2 text-gray-300">

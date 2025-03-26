@@ -1,4 +1,4 @@
-import {Terminal, Cpu, LucideIcon, Wrench, Monitor, Box} from 'lucide-react'
+import { Terminal, Cpu, LucideIcon, Wrench, Monitor, Box } from 'lucide-react'
 
 type KnowledgeCategory = {
   id: number;
@@ -25,7 +25,7 @@ export const knowledge: KnowledgeCategory[] = [
     items: [
       "Spring Boot", "React", "Vite", "Tailwind CSS",
       "Docker", "Redis", "MySQL", "Microsoft Azure",
-      "Git", "GitHub"
+      "Git"
     ],
     icon: Cpu,
     className: "h-6 w-6 md:h-8 md:w-8"
@@ -45,7 +45,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 4,
     title: 'IDEs',
     items: [
-      "Notepad", "IntelliJ IDEA", "Visual Studio Code",
+      "😎 Notepad 😎", "IntelliJ IDEA", "Visual Studio Code",
       "WebStorm", "Vim", "Anaconda"
     ],
     icon: Monitor,

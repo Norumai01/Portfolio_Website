@@ -11,7 +11,7 @@ const KnowledgeSection: React.FunctionComponent<KnowledgeSectionProps> = ({ titl
   return (
     <div className="bg-gradient-to-br from-[#181525] to-[#1d1d30] rounded-lg p-6 shadow-[#181524] shadow-lg transform transition-all duration-300
     hover:scale-105 hover:shadow-xl">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-4 md:mb-6">
         <Icon className={`text-[#FF6B9D] ${className}`} />
         <h3 className="font-semibold text-xl md:text-2xl">{title}</h3>
       </div>
