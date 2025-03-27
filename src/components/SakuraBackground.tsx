@@ -33,7 +33,7 @@ const SakuraBackground: React.FC = () => {
       y: Math.random() * canvas.height,
       size: Math.random() * 15 + 5,
       rotation: Math.random() * Math.PI * 2,
-      speed: Math.random() * 2 + 0.25,
+      speed: Math.random() * 2 + 0.35,
       opacity: Math.random() * 0.5 + 0.2,
     }));
 

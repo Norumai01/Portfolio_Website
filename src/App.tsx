@@ -6,6 +6,8 @@ import { AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users } from "lucid
 import ProfilePic from "./assets/profile_pic.avif";
 import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
+import {experiences} from "./data/experiences.ts";
+import ExperienceSection from "./components/ExperienceSection.tsx";
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -67,6 +69,7 @@ function App() {
               <ul className="menu menu-sm dropdown-content bg-[#1B1829] rounded-box ml-3 w-xs space-y-2 md:w-36 md:space-y-0">
                 <li><a href="#Home" className="hover:text-[#FF6B9D]">Home</a></li>
                 <li><a href="#aboutMe" className="hover:text-[#FF6B9D]">About Me</a></li>
+                <li><a href="#Experiences" className="hover:text-[#FF6B9D]">Experiences</a></li>
                 <li><a className="hover:text-[#FF6B9D]">Projects</a></li>
               </ul>
             </div>
@@ -154,12 +157,23 @@ function App() {
         </section>
 
         {/* Experience */}
-        <section id="Projects" className="container mx-auto px-4 py-16">
+        <section id="Experiences" className="container mx-auto px-4 py-16">
           <div ref={experienceRef} className="opacity-0 translate-y-4">
             <h2 className="flex gap-3 items-center justify-center text-2xl md:text-3xl mb-12 font-bold">
               <Users className="text-[#FF6B9D] w-10 h-10 md:w-12 md:h-12" />
               Experiences
             </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {experiences.map((experience) => (
+                <ExperienceSection
+                  key={experience.id}
+                  company={experience.company}
+                  title={experience.title}
+                  startDate={experience.startDate}
+                  endDate={experience.endDate}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
