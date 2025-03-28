@@ -8,6 +8,8 @@ import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
 import {experiences} from "./data/experiences.ts";
 import ExperienceSection from "./components/ExperienceSection.tsx";
+import {projects} from "./data/projects.ts";
+import ProjectSection from "./components/ProjectSection.tsx";
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -70,7 +72,7 @@ function App() {
                 <li><a href="#Home" className="hover:text-[#FF6B9D]">Home</a></li>
                 <li><a href="#aboutMe" className="hover:text-[#FF6B9D]">About Me</a></li>
                 <li><a href="#Experiences" className="hover:text-[#FF6B9D]">Experiences</a></li>
-                <li><a className="hover:text-[#FF6B9D]">Projects</a></li>
+                <li><a href="#Projects" className="hover:text-[#FF6B9D]">Projects</a></li>
               </ul>
             </div>
           </div>
@@ -184,6 +186,20 @@ function App() {
               <FolderGit className="text-[#FF6B9D] w-10 h-10 md:w-12 md:h-12" />
               Projects
             </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {projects.map((project) => (
+                <ProjectSection
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  fullDescription={project.fullDescription}
+                  tags={project.tags}
+                  images={project.images}
+                  thumbnail={project.thumbnail}
+                  links={project.links}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
