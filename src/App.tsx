@@ -8,7 +8,7 @@ import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
 import {experiences} from "./data/experiences.ts";
 import ExperienceSection from "./components/ExperienceSection.tsx";
-import {projects} from "./data/projects.ts";
+import {projects, ProjectCategory} from "./data/projects.ts";
 import ProjectSection from "./components/ProjectSection.tsx";
 
 function App() {
@@ -16,6 +16,11 @@ function App() {
   const aboutMeRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
   const experienceRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
   const projectsRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectCategory | null>(null);
+
+  const eraseProjectModelClose = () => {
+    setSelectedProject(null);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -197,11 +202,34 @@ function App() {
                   images={project.images}
                   thumbnail={project.thumbnail}
                   links={project.links}
+                  haveModal={project.haveModal}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    document.getElementById('project_modal').showModal()
+                  }}
                 />
               ))}
             </div>
           </div>
         </section>
+
+        <dialog id="project_modal" className="modal transition-opacity duration-300">
+          <div className="modal-box transition-all duration-400 scale-95 opacity-0 modal-open:scale-100 modal-open:opacity-100">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button onClick={eraseProjectModelClose} className="btn btn-sm btn-circle btn-ghost">✕</button>
+            </form>
+            {selectedProject && (
+              <>
+                <h3 className="font-bold text-lg">{selectedProject?.title}</h3>
+                <p className="py-4">Press ESC key or click on ✕ button to close</p>
+              </>
+            )}
+          </div>
+          <form method="dialog" className="modal-backdrop transition-opacity duration-300 opacity-0 modal-open:opacity-50">
+            <button onClick={eraseProjectModelClose}>close</button>
+          </form>
+        </dialog>
 
         {/* Footer */}
         <footer className="relative mt-16">

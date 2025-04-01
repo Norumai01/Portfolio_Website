@@ -2,7 +2,7 @@ import adan_transport from "../assets/adan_thumbnail.png"
 import social_media from "../assets/social_media_thumbnail.png"
 import fribbels from "../assets/fribbels.png"
 
-interface ProjectCategory {
+export interface ProjectCategory {
   id: number;
   title: string;
   description: string;
@@ -11,6 +11,7 @@ interface ProjectCategory {
   images: string[];
   thumbnail: string;
   links: string[];
+  haveModal: boolean;
 }
 
 export const projects: ProjectCategory[] = [
@@ -22,7 +23,8 @@ export const projects: ProjectCategory[] = [
     images: [],
     fullDescription: "",
     links: [],
-    thumbnail: adan_transport
+    thumbnail: adan_transport,
+    haveModal: true
   },
   {
     id: 2,
@@ -32,7 +34,8 @@ export const projects: ProjectCategory[] = [
     images: [],
     fullDescription: "",
     links: [],
-    thumbnail: social_media
+    thumbnail: social_media,
+    haveModal: false
   },
   {
     id: 3,
@@ -42,6 +45,7 @@ export const projects: ProjectCategory[] = [
     images: [],
     fullDescription: "",
     links: [],
-    thumbnail: fribbels
+    thumbnail: fribbels,
+    haveModal: true
   }
 ]
