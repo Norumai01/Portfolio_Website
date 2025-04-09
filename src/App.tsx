@@ -237,7 +237,7 @@ function App() {
             {isModalOpen && selectedProject ? (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-4 md:mt-6">
                 <div className="flex flex-col">
-                  <div className="text-gray-200 p-2 text-sm md:text-base whitespace-pre-line">
+                  <div className="text-gray-200 p-2 text-xs sm:text-sm md:text-base whitespace-pre-line">
                     {selectedProject.fullDescription}
                   </div>
                   <div className="flex justify-center gap-12 mt-6">

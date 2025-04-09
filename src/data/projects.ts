@@ -45,11 +45,13 @@ export const projects: ProjectCategory[] = [
     description: "Real-time control system and algorithms for a medical transportation vehicle using Grand Central M4 Express, Arduino, and CircuitPython.",
     tags: ["Arm-Cortex Microcontrollers", "Grand Central M4 Express", "Arduino", "CircuitPython", "Real-time Control System", "C++", "Python", "I2C/SPI Communication"],
     images: [cart_1, outside, electronics, pcb, poster_sd2],
-    fullDescription: `Research project for Senior Design at University of North Carolina at Charlotte for the client, Ideas for Good. Tasked with the development of a medical vehicle for transporting patients across terrains, never before by disabilities under $10,000 USD budget. 
+    fullDescription: `Transport Cart Control System for Patients with Disabilities
     
-    The Embedded Software Developer of the team, I was responsible for the implementation of the real-time control system that operates the vehicle from the integration of a driving system to brute-testing the vehicle on several rough terrains. Taking on outside tasks including documenting electrical schematics, PCB designs and assisting electrical engineers.
+    As the Embedded Software Developer for this senior design project at UNC Charlotte, I implemented a real-time control system for an electric transport cart enabling patients with disabilities to navigate previously inaccessible terrains.
     
-    Integrating technologies including 3-D orientation sensors (Gyroscope, Rotation Vector), emergency protocol system, and force-stops, prioritizing deep-leveled of safety that ensures patients stability on the wheelchair and vehicle.`,
+    I developed CircuitPython software for an Adafruit Grand Central M4 Express microcontroller that interfaced with a Wii Nunchuck controller, creating intuitive vehicle operation with a 10-gear system and differential steering. The system featured comprehensive safety mechanisms including emergency protocols, force-stops, and orientation sensor integration for stability.
+    
+    Beyond my primary responsibilities, I assisted with electrical schematics and PCB designs. This first prototype established a foundation for future development in accessibility transportation, bringing new mobility opportunities to people with disabilities.`,
     links: [
       {
         icon: FaGithub,
@@ -82,7 +84,13 @@ export const projects: ProjectCategory[] = [
     description: "A Honkai Star Rail optimizer, relic scorer, damage calculator, and various other tools for building and gearing characters. Special thanks to Fribbels and other contributors for the development as well.",
     tags: ["Ant Design", "Vitest", "i18next", "TypeScript", "YAML"],
     images: [home, features, characters, relics, warp],
-    fullDescription: "description",
+    fullDescription: `Fribbels Star Rail Optimizer. 
+    
+    Game tools for showcasing characters' status, optimal relics (equipments), damages calculation, and planning for future characters for the game, Honkai Star Rail.
+    
+    I have contributed to key development of the tool, Warp Planner. Warp Planner allows users to plan future pulling chances using pre-obtained in-game currencies inputted by the player.
+    
+    Contribution includes modifying user interfaces to add new features developed, utilizing complex algorithms and probability distribution for computing pre-obtained rewards into the pulling chance, and comprehensive unit tests ensuring functionality of the resources prediction and probability.`,
     links: [
       {
         icon: FaGithub,
