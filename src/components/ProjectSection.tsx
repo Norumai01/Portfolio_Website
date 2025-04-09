@@ -1,3 +1,5 @@
+import { ProjectLink } from "../data/projects.ts";
+
 interface ProjectsProps {
   title: string;
   description: string;
@@ -5,7 +7,7 @@ interface ProjectsProps {
   tags: string[];
   images: string[];
   thumbnail: string;
-  links: string[];
+  links: ProjectLink[];
   haveModal: boolean;
   onClick?: () => void;
 }
@@ -24,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ title, description, tags, thumbnail
       hover:scale-105 hover:shadow-xl ${haveModal ? "cursor-pointer" : ""}`}
       onClick={handleClick}
     >
-      <img src={thumbnail} alt="Project Preview" className="w-full h-48 object-cover" />
+      <img src={thumbnail} alt="Project Preview" className="w-full h-48 md:h-60 object-cover" />
       <div className="p-6">
         <h3 className="text-[#FF6B9D] font-semibold text-xl md:text-2xl">{title}</h3>
         <p className="text-gray-400 text-sm md:text-base mt-4 md:mt-6">{description}</p>
