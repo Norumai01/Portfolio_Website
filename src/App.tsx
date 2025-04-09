@@ -2,20 +2,31 @@ import SakuraBackground from "./components/SakuraBackground.tsx";
 import { useState, useEffect, useRef, RefObject } from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import { AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users } from "lucide-react";
+import {AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users, Phone} from "lucide-react";
 import ProfilePic from "./assets/profile_pic.avif";
 import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
 import {experiences} from "./data/experiences.ts";
 import ExperienceSection from "./components/ExperienceSection.tsx";
-import {projects} from "./data/projects.ts";
+import {projects, ProjectCategory} from "./data/projects.ts";
 import ProjectSection from "./components/ProjectSection.tsx";
+import ImageCarousel from "./components/ProjectCarousel.tsx";
+import ProjectCarouselLinks from "./components/ProjectCarouselLinks.tsx";
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const aboutMeRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
   const experienceRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
   const projectsRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectCategory | null>(null);
+
+  // Track if modal is open, needed for resetting images counter in carousel.
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const eraseProjectModelClose = () => {
+    setSelectedProject(null);
+    setIsModalOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +63,7 @@ function App() {
       observer.disconnect();
     };
   }, []);
+
 
 
   return (
@@ -141,6 +153,13 @@ function App() {
                     <Mail className="text-[#FF6B9D] size-5 md:size-6"/>
                     johnnydinhnguyen2001@gmail.com
                   </p>
+                  <p id="Phone" className="flex gap-3 items-center text-xs md:text-sm font-sans text-gray-200 mt-2">
+                    <Phone className="text-[#FF6B9D] size-5 md:size-6"/>
+                    <div>
+                      704-937-1461
+                      <span className="font-bold ml-2">Leave voicemail.</span>
+                    </div>
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col space-y-6">
@@ -197,11 +216,56 @@ function App() {
                   images={project.images}
                   thumbnail={project.thumbnail}
                   links={project.links}
+                  haveModal={project.haveModal}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setIsModalOpen(true);
+                    document.getElementById('project_modal').showModal()
+                  }}
                 />
               ))}
             </div>
           </div>
         </section>
+
+        <dialog id="project_modal" className="modal transition-opacity duration-300">
+          <div className="modal-box rounded-2xl max-w-[88rem] bg-gradient-to-br from-[#181525] to-[#1d1d30] border-3 border-[#C23D69] shadow-lg shadow-[#FF6B9D] transition-all duration-400 scale-95 opacity-0 modal-open:scale-100 modal-open:opacity-100">
+            <form method="dialog" className="flex justify-between items-center">
+              <h3 className="font-bold text-xl md:text-2xl text-[#FF6B9D]">{selectedProject?.title}</h3>
+              <button onClick={eraseProjectModelClose} className="text-gray-300 btn btn-md md:btn-lg btn-circle btn-ghost hover:bg-[#2A2744]">✕</button>
+            </form>
+            {isModalOpen && selectedProject ? (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-4 md:mt-6">
+                <div className="flex flex-col">
+                  <div className="text-gray-200 p-2 text-xs sm:text-sm md:text-base whitespace-pre-line">
+                    {selectedProject.fullDescription}
+                  </div>
+                  <div className="flex justify-center gap-12 mt-6">
+                    {selectedProject.links.map((link) => (
+                      <ProjectCarouselLinks
+                        webName={link.webName}
+                        link={link.link}
+                        icon={link.icon}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <ImageCarousel
+                  images={selectedProject.images}
+                  isOpen={isModalOpen}
+                  className="row-start-1 lg:col-start-2 lg:col-span-2"
+                />
+              </div>
+            ) : (
+              <div className="text-center">
+                Modal is closing...
+              </div>
+            )}
+          </div>
+          <form method="dialog" className="modal-backdrop transition-opacity duration-300 opacity-0 modal-open:opacity-50">
+            <button onClick={eraseProjectModelClose}>close</button>
+          </form>
+        </dialog>
 
         {/* Footer */}
         <footer className="relative mt-16">
