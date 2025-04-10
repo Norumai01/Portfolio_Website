@@ -220,7 +220,12 @@ function App() {
                   onClick={() => {
                     setSelectedProject(project);
                     setIsModalOpen(true);
-                    document.getElementById('project_modal').showModal()
+
+                    // Open modal from DaisyUI
+                    const modalElement = document.getElementById('project_modal') as HTMLDialogElement;
+                    if (modalElement) {
+                      modalElement.showModal();
+                    }
                   }}
                 />
               ))}
