@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, RefObject } from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import {AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users, Phone} from "lucide-react";
-import ProfilePic from "./assets/profile_pic.avif";
+import ProfilePic from "./assets/profile_pic.png";
 import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
 import {experiences} from "./data/experiences.ts";
