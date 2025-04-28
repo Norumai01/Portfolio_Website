@@ -31,9 +31,9 @@ const SakuraBackground: React.FC = () => {
     const petals: Petal[] = Array.from({ length: 30 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: Math.random() * 15 + 5,
+      size: Math.random() * 15 + 10,
       rotation: Math.random() * Math.PI * 2,
-      speed: Math.random() * 2 + 0.35,
+      speed: Math.random() * 2 + 0.15,
       opacity: Math.random() * 0.5 + 0.2,
     }));
 
