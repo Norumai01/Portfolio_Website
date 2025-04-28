@@ -12,6 +12,8 @@ import {projects, ProjectCategory} from "./data/projects.ts";
 import ProjectSection from "./components/ProjectSection.tsx";
 import ImageCarousel from "./components/ProjectCarousel.tsx";
 import ProjectCarouselLinks from "./components/ProjectCarouselLinks.tsx";
+import BackgroundMusic from "./components/backgroundMusic.tsx";
+import music from "./assets/music/Light at the End of the Tunnel - Jom Bee (Lofi hip hop).mp3"
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -73,20 +75,21 @@ function App() {
       <div className={`relative z-20 transition-colors duration-500 ${scrolled ? "bg-[#1E1B2E]" : ""}`}>
         {/* Dropdown Menu */}
         <nav className="absolute xl:fixed container max-w-full">
-          <div className="flex items-center justify-between mb-6 mt-3">
+          <div className="flex items-center justify-start gap-3 mb-6 mt-3">
             <div className="dropdown">
               <div
                 tabIndex={0}
                 className="ml-3 p-3 flex items-center rounded-full hover:bg-[#2A2744] cursor-pointer border border-[#1B1829] transition-all duration-400 shadow-[#181524] shadow-lg hover:shadow-xl">
                 <AlignLeft className="text-gray-300" />
               </div>
-              <ul className="menu menu-sm dropdown-content bg-[#1B1829] rounded-box ml-3 w-xs space-y-2 md:w-36 md:space-y-0">
+              <ul className="menu menu-sm md:menu-md dropdown-content bg-[#1B1829] rounded-box ml-3 w-xs space-y-4 md:w-60 md:space-y-2">
                 <li><a href="#Home" className="hover:text-[#FF6B9D]">Home</a></li>
                 <li><a href="#aboutMe" className="hover:text-[#FF6B9D]">About Me</a></li>
                 <li><a href="#Experiences" className="hover:text-[#FF6B9D]">Experiences</a></li>
                 <li><a href="#Projects" className="hover:text-[#FF6B9D]">Projects</a></li>
               </ul>
             </div>
+            <BackgroundMusic audioSource={music} />
           </div>
         </nav>
 
