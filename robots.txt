@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://norumai.moe/sitemap.xml
