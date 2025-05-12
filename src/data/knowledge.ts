@@ -13,7 +13,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 1,
     title: "Programming Languages",
     items: [
-      "Java", "TypeScript", "C++", "C", "Python",
+      "Java", "JavaScript", "TypeScript", "C++", "C", "Python",
       "PowerShell", "HTML5", "CSS3", "JSON", "XML"
     ],
     icon: Terminal,
@@ -23,9 +23,9 @@ export const knowledge: KnowledgeCategory[] = [
     id: 2,
     title: "Technologies",
     items: [
-      "Spring Boot", "React", "Vite", "Tailwind CSS",
+      "Spring Boot", "React.js", "Tailwind CSS",
       "Docker", "Redis", "MySQL", "Microsoft Azure",
-      "Git"
+      "Git", "GitHub Actions", "Postman", "JUnit", "Vitest",
     ],
     icon: Cpu,
     className: "h-6 w-6 md:h-8 md:w-8"
@@ -34,7 +34,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 3,
     title: 'Hardware Technologies',
     items: [
-      "Adafruit", "Arduino", "STM32", "CircuitPython",
+      "Raspberry Pi", "Arduino", "STM32", "ESP32", "CircuitPython",
       "Oscilloscope", "Multimeter", "Signal Generator",
       "Logic Analyzer", "Electronics", "Soldering"
     ],
@@ -55,7 +55,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 5,
     title: "Operating System",
     items: [
-      "Windows", "Ubuntu", "ArchLinux"
+      "Windows", "Ubuntu", "Debian,", "ArchLinux"
     ],
     icon: Box,
     className: "h-6 w-6 md:h-8 md:w-8"
