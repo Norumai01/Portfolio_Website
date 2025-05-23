@@ -160,7 +160,6 @@ function App() {
                     <Phone className="text-[#FF6B9D] size-5 md:size-6"/>
                     <div>
                       704-937-1461
-                      <span className="font-bold ml-2">Leave voicemail.</span>
                     </div>
                   </p>
                 </div>
