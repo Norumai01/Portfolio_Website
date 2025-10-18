@@ -26,7 +26,11 @@ const Projects: React.FC<ProjectsProps> = ({ title, description, tags, thumbnail
       hover:scale-105 hover:shadow-xl ${haveModal ? "cursor-pointer" : ""}`}
       onClick={handleClick}
     >
-      <img src={thumbnail} alt="Project Preview" className="w-full h-48 md:h-60 object-cover" />
+      <div className="w-full h-48 md:h-60 relative overflow-hidden bg-[#181525]">
+        <div className="flex items-center justify-center w-full h-full">
+          <img src={thumbnail} alt="Project Preview" className="object-cover" />
+        </div>
+      </div>
       <div className="p-6">
         <h3 className="text-[#FF6B9D] font-semibold text-xl md:text-2xl">{title}</h3>
         <p className="text-gray-400 text-sm md:text-base mt-4 md:mt-6">{description}</p>

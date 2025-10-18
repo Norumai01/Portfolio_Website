@@ -2,7 +2,7 @@ import SakuraBackground from "./components/SakuraBackground.tsx";
 import { useState, useEffect, useRef, RefObject } from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-import {AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users, Phone} from "lucide-react";
+import {AlignLeft, CodeXml, Mail, MapPin, Heart, FolderGit, Users} from "lucide-react";
 import ProfilePic from "./assets/profile_pic.png";
 import { knowledge } from "./data/knowledge.ts";
 import KnowledgeSection from "./components/KnowledgeSection.tsx";
@@ -12,8 +12,6 @@ import {projects, ProjectCategory} from "./data/projects.ts";
 import ProjectSection from "./components/ProjectSection.tsx";
 import ImageCarousel from "./components/ProjectCarousel.tsx";
 import ProjectCarouselLinks from "./components/ProjectCarouselLinks.tsx";
-import BackgroundMusic from "./components/backgroundMusic.tsx";
-import music from "./assets/music/Light at the End of the Tunnel - Jom Bee (Lofi hip hop).mp3"
 
 function App() {
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -89,7 +87,6 @@ function App() {
                 <li><a href="#Projects" className="hover:text-[#FF6B9D]">Projects</a></li>
               </ul>
             </div>
-            <BackgroundMusic audioSource={music} />
           </div>
         </nav>
 
@@ -146,7 +143,7 @@ function App() {
                     Norumai
                   </div>
                   <p className="text-md md:text-lg font-sans text-gray-300 mt-4">
-                    Tech gremlin passionate for software architecture, full-stack development, and embedded systems. Focused on user-centered design and security.
+                    Hardware-Software Tech geek passionate for safety-critical embedded applications, sensors development, and system architectural design. Expertise in embedded systems, electronics, and full-stack development.
                   </p>
                   <p id="location" className="flex gap-3 items-center text-xs md:text-sm font-sans text-gray-200 mt-6">
                     <MapPin className="text-[#FF6B9D] size-5 md:size-6"/>
@@ -154,13 +151,7 @@ function App() {
                   </p>
                   <p id="email" className="flex gap-3 items-center text-xs md:text-sm font-sans text-gray-200 mt-2">
                     <Mail className="text-[#FF6B9D] size-5 md:size-6"/>
-                    johnnydinhnguyen2001@gmail.com
-                  </p>
-                  <p id="Phone" className="flex gap-3 items-center text-xs md:text-sm font-sans text-gray-200 mt-2">
-                    <Phone className="text-[#FF6B9D] size-5 md:size-6"/>
-                    <div>
-                      704-937-1461
-                    </div>
+                    nguyenjohn4615@gmail.com
                   </p>
                 </div>
               </div>
@@ -236,20 +227,30 @@ function App() {
         </section>
 
         <dialog id="project_modal" className="modal transition-opacity duration-300">
-          <div className="modal-box rounded-2xl max-w-[88rem] bg-gradient-to-br from-[#181525] to-[#1d1d30] border-3 border-[#C23D69] shadow-lg shadow-[#FF6B9D] transition-all duration-400 scale-95 opacity-0 modal-open:scale-100 modal-open:opacity-100">
-            <form method="dialog" className="flex justify-between items-center">
-              <h3 className="font-bold text-xl md:text-2xl text-[#FF6B9D]">{selectedProject?.title}</h3>
-              <button onClick={eraseProjectModelClose} className="text-gray-300 btn btn-md md:btn-lg btn-circle btn-ghost hover:bg-[#2A2744]">✕</button>
+          <div className="modal-box rounded-2xl max-w-[88rem] bg-gradient-to-br from-[#181525] to-[#1d1d30] border-3 border-[#C23D69] shadow-lg shadow-[#FF6B9D]">
+            <form method="dialog">
+              {/* Close button should be inside form for proper dialog closing */}
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-300 hover:bg-[#2A2744]"
+              >
+                ✕
+              </button>
             </form>
-            {isModalOpen && selectedProject ? (
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-4 md:mt-6">
+
+            <h3 className="font-bold text-xl md:text-2xl text-[#FF6B9D] mb-4">
+              {selectedProject?.title}
+            </h3>
+
+            {selectedProject && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                 <div className="flex flex-col">
                   <div className="text-gray-200 p-2 text-xs sm:text-sm md:text-base whitespace-pre-line">
                     {selectedProject.fullDescription}
                   </div>
                   <div className="flex justify-center gap-12 mt-6">
-                    {selectedProject.links.map((link) => (
+                    {selectedProject.links.map((link, index) => (
                       <ProjectCarouselLinks
+                        key={index}
                         webName={link.webName}
                         link={link.link}
                         icon={link.icon}
@@ -262,10 +263,6 @@ function App() {
                   isOpen={isModalOpen}
                   className="row-start-1 lg:col-start-2 lg:col-span-2"
                 />
-              </div>
-            ) : (
-              <div className="text-center">
-                Modal is closing...
               </div>
             )}
           </div>

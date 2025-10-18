@@ -30,12 +30,14 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, isOpen, className
   return (
     <div className={`flex justify-center overflow-y-auto p-2 ${className}`}>
       {/* Carousel */}
-      <div className="relative w-full h-auto rounded-2xl overflow-hidden border-2 border-[#FF6B9D] shadow-sm shadow-[#FF6B9D]">
-        <img
-          src={images ? images[currentImageIndex] : undefined}
-          alt={images ? `Project Screenshot` : "Error loading images..."}
-          className="w-full h-full object-cover"
-        />
+      <div className="bg-[#0a080f] relative w-full h-auto rounded-2xl overflow-hidden border-2 border-[#FF6B9D] shadow-sm shadow-[#FF6B9D]">
+        <div className="flex items-center justify-center w-full h-full">
+          <img
+            src={images ? images[currentImageIndex] : undefined}
+            alt={images ? `Project Screenshot` : "Error loading images..."}
+            className="object-cover"
+          />
+        </div>
 
         {/* Controls */}
         {images && (

@@ -1,6 +1,8 @@
 import adan_transport from "../assets/adan_thumbnail.png"
 import social_media from "../assets/social_media_thumbnail.png"
 import fribbels from "../assets/fribbels.png"
+import wwltp from "../assets/wwltp_thumbnail.png"
+import smart_temperature from "../assets/smart_temperature.png"
 
 // Adan's Transport Project
 import cart_1 from "../assets/adan_transport/Cart_1.jpg"
@@ -18,6 +20,13 @@ import warp from "../assets/fribbels_op/Warp.png"
 
 import { FaVideo, FaGithub, FaGlobe } from "react-icons/fa";
 import { IconType } from "react-icons";
+
+// We Would Like To Play Project
+import homePage from "../assets/wwltp/home.png"
+import newsPage from "../assets/wwltp/news.png"
+import articlePage from "../assets/wwltp/news_page.png"
+import editorPage from "../assets/wwltp/editor_1.png"
+import editorPage2 from "../assets/wwltp/editor_2.png"
 
 
 export interface ProjectCategory {
@@ -42,8 +51,8 @@ export const projects: ProjectCategory[] = [
   {
     id: 1,
     title: "Adan's Transport",
-    description: "Real-time control system and algorithms for a medical transportation vehicle using Grand Central M4 Express, Arduino, and CircuitPython.",
-    tags: ["Arm-Cortex Microcontrollers", "Grand Central M4 Express", "Arduino", "CircuitPython", "Real-time Control System", "C++", "Python", "I2C/SPI Communication"],
+    description: "Real-time control system and algorithms for a medical transportation vehicle using Grand Central M4 Express, Arduino, and System Testing with Python.",
+    tags: ["Grand Central M4 Express", "Arduino", "Real-Time System", "C++", "Python", "I2C/SPI Communication", "DC Motors", "Sensors Integration", "Motorsports"],
     images: [cart_1, outside, electronics, pcb, poster_sd2],
     fullDescription: `Transport Cart Control System for Patients with Disabilities
     
@@ -69,22 +78,39 @@ export const projects: ProjectCategory[] = [
   },
   {
     id: 2,
-    title: "StarSocial - Social Media Application",
-    description: "Social media web application targeted towards video game enthusiasts whose play Gacha games. Creating a community for enthusiasts to share their favorite moments.",
-    tags: ["Spring Boot", "Spring Security", "React.js + Vite", "MySQL", "Redis", "Java", "TypeScript", "Tailwind CSS", "DaisyUI", "XML"],
-    images: [],
-    fullDescription: "description",
+    title: "We Would Like To Play",
+    description: "Esports News and Media platform using Payload CMS and Next.js, sharing the latest video games, esports news and tournaments. Contacted by We Would Like To Play (WWLTP).",
+    fullDescription: `Esports News and Media Platform
+  
+    I was contacted by We Would Like To Play, a startup organization passionate about esports and video games. They needed help migrating 1000+ articles to a modern platform that could handle their growing content library and provide a better experience for both editors and readers.
+
+    I built them a full-stack news platform using Next.js and Payload CMS with PostgreSQL. The system features a rich-text editor dashboard for content management, integrated APIs from IGDB, PandaScore, and Grid.gg for real-time esports data, and smart caching strategies to keep everything running fast. I implemented role-based access control, SEO optimization, server-side static generation, and automatic image optimization.
+
+    I also set up comprehensive testing with Vitest, CI/CD pipelines with GitHub Actions, and deployed everything on Vercel. The result is a scalable platform that handles high traffic with sub-second load times and automatically updates esports data every 15 minutes.`,
+    tags: ["Next.js", "PostgreSQL", "Payload CMS", "TypeScript", "Vercel", "CI/CD", "GitHub Actions", "Tailwind CSS", "API Integration", "Grid.gg", "PandaScore", "IGDB"],
+    images: [homePage, newsPage, articlePage, editorPage, editorPage2],
+    thumbnail: wwltp,
     links: [],
-    thumbnail: social_media,
-    haveModal: false
+    haveModal: true
   },
   {
     id: 3,
+    title: "Smart Room Climate Control System",
+    description: "IoT-based temperature control system using MQTT protocol to automatically maintain individual room temperature through integrated heating and cooling devices",
+    fullDescription: "",
+    tags: ["IoT", "MQTT", "Embedded Systems", "Hardware Integration", "Mobile App", "Temperature Control"],
+    images: [],
+    thumbnail: smart_temperature,
+    links: [],
+    haveModal: false
+  },
+  {
+    id: 4,
     title: "Fribbels' HSR Optimizer (Open-Source Contributor)",
     description: "A Honkai Star Rail optimizer, relic scorer, damage calculator, and various other tools for building and gearing characters. Special thanks to Fribbels and other contributors for the development as well.",
     tags: ["Ant Design", "Vitest", "i18next", "TypeScript", "YAML"],
     images: [home, features, characters, relics, warp],
-    fullDescription: `Fribbels Star Rail Optimizer. 
+    fullDescription: `Fribbels Star Rail Optimizer 
     
     Game tools for showcasing characters' status, optimal relics (equipments), damages calculation, and planning for future characters for the game, Honkai Star Rail.
     
@@ -105,5 +131,16 @@ export const projects: ProjectCategory[] = [
     ],
     thumbnail: fribbels,
     haveModal: true
-  }
+  },
+  {
+    id: 5,
+    title: "StarSocial - Social Media Application",
+    description: "Social media web application targeted towards video game enthusiasts whose play Gacha games. Creating a community for enthusiasts to share their favorite moments.",
+    tags: ["Spring Boot", "Spring Security", "React.js + Vite", "MySQL", "Redis", "Java", "TypeScript", "Tailwind CSS", "DaisyUI", "XML"],
+    images: [],
+    fullDescription: "description",
+    links: [],
+    thumbnail: social_media,
+    haveModal: false
+  },
 ]
