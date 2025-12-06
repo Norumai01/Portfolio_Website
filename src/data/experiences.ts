@@ -12,7 +12,7 @@ export const experiences: ExperienceCategory[] = [
     company: "We Would Like To Play",
     title: "Software Engineer (Volunteer)",
     startDate: "May 2025",
-    endDate: "Present"
+    endDate: "Nov. 2025"
   },
   {
     id: 2,

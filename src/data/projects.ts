@@ -1,8 +1,7 @@
 import adan_transport from "../assets/adan_thumbnail.png"
-import social_media from "../assets/social_media_thumbnail.png"
 import fribbels from "../assets/fribbels.png"
 import wwltp from "../assets/wwltp_thumbnail.png"
-import smart_temperature from "../assets/smart_temperature.png"
+import smart_climate from "../assets/smart_climate_thumbnail.png"
 
 // Adan's Transport Project
 import cart_1 from "../assets/adan_transport/Cart_1.jpg"
@@ -27,6 +26,13 @@ import newsPage from "../assets/wwltp/news.png"
 import articlePage from "../assets/wwltp/news_page.png"
 import editorPage from "../assets/wwltp/editor_1.png"
 import editorPage2 from "../assets/wwltp/editor_2.png"
+
+// ThermaLink - Smart Room Climate Control System
+import room_layout from "../assets/thermalink/general_room_layout.png"
+import hardware_two from "../assets/thermalink/hardware_2.png"
+import iot_messages from "../assets/thermalink/messages.png"
+import mobile_app from "../assets/thermalink/mobile_app.png"
+import network_architect from "../assets/thermalink/network_tech.png"
 
 
 export interface ProjectCategory {
@@ -95,14 +101,26 @@ export const projects: ProjectCategory[] = [
   },
   {
     id: 3,
-    title: "Smart Room Climate Control System",
-    description: "IoT-based temperature control system using MQTT protocol to automatically maintain individual room temperature through integrated heating and cooling devices",
-    fullDescription: "",
-    tags: ["IoT", "MQTT", "Embedded Systems", "Hardware Integration", "Mobile App", "Temperature Control"],
-    images: [],
-    thumbnail: smart_temperature,
-    links: [],
-    haveModal: false
+    title: "ThermaLink - Smart Room Climate Control System",
+    description: "ThermaLink is a Smart Room Climate Control System designed to provide independent temperature control for individual rooms within a multi-occupant living environment. CSC 591 - Internet of Things (IoT)",
+    fullDescription: `Smart Room Climate Control System
+    In living spaces such shared housing, where multiple occupants live together, common challenge arises where the entire house is either heat/cool from a centralized HVAC systems. To address this issue, my team created smart climate control container that also runs through an IoT network and can be control via a mobile application.
+    
+    In our network, we have two different ESP32s. Using the AHT20 Temperature Sensor, we can monitor the temperature of the controlled room and desired rooms as well. We also have a Raspberry Pi Camera using OpenCV and YOLO models to detect occupant presences in the room. All publishing messages to a MQTT broker.
+    
+    Using those published messages to our MQTT broker, we have a Backend Server, programmed with Spring Boot (Java) that collects those data and storing them into the database via REST APIs. The mobile application, prograammed with TypeScript and React Native, polls from the backend APIs every 3-5 seconds to simulate real-time monitoring.
+    `,
+    tags: ["Internet of Things (IoT)", "Embedded Systems", "Relay Controller", "Smart HVAC System", "ESP32", "Raspberry Pi", "ESP-IDF", "Spring Boot", "React Native"],
+    images: [room_layout, smart_climate, hardware_two, mobile_app, network_architect, iot_messages],
+    thumbnail: smart_climate,
+    links: [
+      {
+        icon: FaGithub,
+        webName: "GitHub",
+        link: "https://github.com/HMC03/ThermaLink"
+      },
+    ],
+    haveModal: true
   },
   {
     id: 4,
@@ -131,16 +149,5 @@ export const projects: ProjectCategory[] = [
     ],
     thumbnail: fribbels,
     haveModal: true
-  },
-  {
-    id: 5,
-    title: "StarSocial - Social Media Application",
-    description: "Social media web application targeted towards video game enthusiasts whose play Gacha games. Creating a community for enthusiasts to share their favorite moments.",
-    tags: ["Spring Boot", "Spring Security", "React.js + Vite", "MySQL", "Redis", "Java", "TypeScript", "Tailwind CSS", "DaisyUI", "XML"],
-    images: [],
-    fullDescription: "description",
-    links: [],
-    thumbnail: social_media,
-    haveModal: false
   },
 ]

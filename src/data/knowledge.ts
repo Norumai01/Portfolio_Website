@@ -13,7 +13,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 1,
     title: "Programming Languages",
     items: [
-      "C++", "Java", "C",  "Python", "JavaScript/TypeScript",
+      "Java", "C++", "C",  "Python", "JavaScript/TypeScript",
       "Bash", "PowerShell",
       "HTML", "CSS"
     ],
@@ -24,9 +24,10 @@ export const knowledge: KnowledgeCategory[] = [
     id: 2,
     title: 'Hardware Technologies',
     items: [
-      "Raspberry Pi", "Arduino", "STM32", "ESP32", "Internet of Things (IoT)",
+      "Raspberry Pi", "Arduino", "STM32", "ESP32",
       "I2C", "SPI", "UART",
-      "Oscilloscope", "Multimeter", "Function Generator", "Logic Analyzer", "Electronics", "Soldering"
+      "Oscilloscope", "Multimeter", "Function Generator", "Logic Analyzer", "Electronics", "Soldering",
+      "Internet of Things (IoT)", "MQTT", "Computer Vision"
     ],
     icon: Wrench,
     className: "h-6 w-6 md:h-8 md:w-8"
@@ -35,7 +36,7 @@ export const knowledge: KnowledgeCategory[] = [
     id: 3,
     title: "Software Technologies",
     items: [
-      "Spring Boot", "Next.js", "React.js", "Payload CMS",
+      "Spring Boot", "Next.js", "React.js", "React Native", "Payload CMS",
       "MySQL", "PostgreSQL", "Redis",
       "GitHub Actions (CI/CD)", "Postman", "JUnit", "Vitest", "Playwright",
       "Docker", "AWS"
@@ -48,7 +49,7 @@ export const knowledge: KnowledgeCategory[] = [
     title: 'Development Tools',
     items: [
       "JetBrains IDEs", "Visual Studio Code", "IntelliJ IDEA", "WebStorm",
-      "Git", "GitHub"
+      "Git", "GitHub", "ESP-IDF"
     ],
     icon: Monitor,
     className: "h-6 w-6 md:h-8 md:w-8"
